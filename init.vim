@@ -181,13 +181,6 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/general/path/of/snippets/']
 nnoremap <leader>! ihb_t!
 nnoremap <leader>rf! irf__c
 nnoremap <leader>vs! ivs__j
-nnoremap <leader>kdep ikdep_y
-nnoremap <leader>kser ikser_y
-nnoremap <leader>ksec iksec_y
-nnoremap <leader>king iking_y
-nnoremap <leader>kcon ikcon_y
-nnoremap <leader>kpvc ikpvc_y
-nnoremap <leader>kvol ikvol_y
 
 " DEOPLETE
 " let g:python_host_prog = '/usr/bin/python'
@@ -229,23 +222,23 @@ endfunction
 function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
 endfunction
-nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
-xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+nnoremap <leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " GOYO
 let g:goyo_width=90
 nnoremap <leader>m :Goyo<cr>
 
 " Fugitive
-nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gb :Git branch<Space>
-nnoremap <Leader>go :Git checkout<Space>
-nnoremap <Leader>gc :Gcommit -v -q<CR>
-nnoremap <Leader>gg :Gcommit -v -q %:p<CR> " Commits current file
-nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>gm :Git merge<CR>
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gg :Gcommit -v -q %:p<CR> " Commits current file
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gm :Git merge<CR>
 
 " TELESCOPE
 nnoremap <leader>ft <cmd>Telescope find_files<cr>
@@ -292,16 +285,16 @@ endfunction
 " let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
 
 "BUFFER MANAGEMENT
-nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
-nnoremap <Leader>x :bd<CR> " Delete current buffer
-nnoremap <Leader>X :bd!<CR> " Delete current buffer
-nnoremap <Leader>n :bn!<CR> " Next buffer
-nnoremap <Leader>N :bN!<CR> " Previous buffer
-nnoremap <Leader>t :enew<CR> " Make a new empty buffer
+nnoremap <leader>ff :CtrlP<CR> " Find a file in the current folder recursively
+nnoremap <leader>x :bd<CR> " Delete current buffer
+nnoremap <leader>X :bd!<CR> " Delete current buffer
+nnoremap <leader>n :bn!<CR> " Next buffer
+nnoremap <leader>N :bN!<CR> " Previous buffer
+nnoremap <leader>t :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
 
 " ESLINT
-nnoremap <Leader>e :new<Bar>0r!npm run lint<CR> " Run eslint in vue
+nnoremap <leader>e :new<Bar>0r!npm run lint<CR> " Run eslint in vue
 
 " SPLIT NAVIGATION
 nnoremap <C-J> <C-W><C-J>
@@ -313,8 +306,8 @@ nnoremap <C-H> <C-W><C-H>
 nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
 
-nnoremap <Leader>. @: " Repeat last ex command
-nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
+nnoremap <leader>. @: " Repeat last ex command
+nnoremap <leader>r :set relativenumber!<CR> " Toggle relative line numbers
 
 " YANK/PUT FROM/TO CLIPBOARD
 vnoremap <leader>y "*y 
@@ -325,3 +318,12 @@ nnoremap Y y$
 
 " SPELLCHECK TOGGLE IS <F4>
 :map <F4> :setlocal spell! spelllang=en_us<CR>
+
+" MOVING TEXT AROUND
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-k> <esc>:m .-2<CR>==
+inoremap <C-j> <esc>:m .+1<CR>==
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
