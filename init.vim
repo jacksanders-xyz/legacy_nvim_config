@@ -320,5 +320,8 @@ nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
 vnoremap <leader>y "*y 
 map<leader>p "*P  
 
+" MAKE Y BEHAVE LIKE ALL THE OTHER CAPITAL LETTERS
+nnoremap Y y$
+
 " SPELLCHECK TOGGLE IS <F4>
 :map <F4> :setlocal spell! spelllang=en_us<CR>
