@@ -1,79 +1,88 @@
 "
-"
 "    ____      _ __        _
 "   /  _/___  (_) /__   __(_)___ ___
 "   / // __ \/ / __/ | / / / __ `__ \
 " _/ // / / / / /__| |/ / / / / / / /
 "/___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
-"
-" PLUGINS, RUN :PlugInstall TO SET CHANGES
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin('~/.vim/plugged')
+
+" T-POPE
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'joshdick/onedark.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'osyo-manga/vim-over'
-Plug 'thinca/vim-qfreplace'
-Plug 'kshenoy/vim-signature'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'reedes/vim-pencil'
-Plug 'junegunn/goyo.vim'
-Plug 'posva/vim-vue'
-Plug 'mileszs/ack.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
-Plug 'sirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
-Plug 'Shougo/deoplete.nvim'  
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tpope/vim-markdown'
+
+" FIND FILES
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
+
+" COLORS
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'gruvbox-community/gruvbox'
+
+"LSP
+Plug 'neovim/nvim-lspconfig'
+
+" VIMSPECTOR
+Plug 'puremourning/vimspector'
+
+" TREESITTER
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
+" DEOPLETE
+Plug 'Shougo/deoplete.nvim'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
+" PRODUCTIVITY/VISUAL
+Plug 'sirVer/ultisnips'
+Plug 'szw/vim-maximizer'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'airblade/vim-gitgutter'
+
+" VIM WIKI
+Plug 'vimwiki/vimwiki'
+
+" LANGS
+Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mrk21/yaml-vim'
+Plug 'osyo-manga/vim-over'
+
+" OTHER
+Plug 'thinca/vim-qfreplace'
+Plug 'kshenoy/vim-signature'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'posva/vim-vue'
+Plug 'mileszs/ack.vim'
+Plug 'dense-analysis/ale'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 call plug#end()
+
 
 " ~THEMES AND COLORS~
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'medium'
-set background=dark
-" ~JACK OG~
-" ONEDARK 
-" let g:onedark_hide_endofbuffer = 0
-" let g:onedark_termcolors=16
-" let g:onedark_terminal_italics = 1
-
-" " AIRLINE change theme back to 'onedark'
-" let g:airline_theme='onedark'
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
-
-" " COLORS, THESE ARE THE COLORS FOR THE OG SCHEME:
-" colorscheme onedark
-" set background=dark
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-" Gruvbox stuff for tabs 
+" GRUVBOX STUFF FOR TABS
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -86,45 +95,10 @@ syntax enable
 command E Ex " Disambiguates E
 filetype plugin on
 filetype indent on
-set encoding=utf-8
-set exrc
-set laststatus=2
-set nocompatible
-set nowrap
-set ignorecase smartcase
-set incsearch
-set nohlsearch
-set t_Co=256
-set number
-set tabstop=2
-set expandtab
-set autoindent smartindent
-set softtabstop=2
-set shiftwidth=2
-set nobackup
-set noswapfile
-set noerrorbells
-set spelllang=en_us
-set hidden " Puts buffer in the background without writing
-set lazyredraw " Don't update display during macros
-set ttyfast " Send more characters at once
-set history=999
-set undolevels=999
-set autoread
-set title
-set scrolloff=8
-set sidescrolloff=7
-set guicursor=       
-set relativenumber
-set wildmenu
-set wildchar=<TAB>
-set wildmode=full
-set wildignore+=*.DS_STORE,*.db,node_modules/**,*.jpg,*.png,*.gif
-set diffopt=filler
-set diffopt+=iwhite
-set listchars=trail:·,nbsp:⚋
-set fillchars=fold:-
-set updatetime=100 " Keeps gitgutter speedy
+
+" JUMP AROUND
+nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+nnoremap <leader>dX :call vimspector#ClearBreakpoints()><CR>
 
 " VIM-YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -133,10 +107,30 @@ let g:indentLine_char = '⦙'
 " LEADER
 let mapleader=" "
 
+"TRIM WHITESPACE AUTO COMMAND
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+augroup CLEANLINESS
+  autocmd!
+  autocmd BufWritePre * :call TrimWhitespace()
+augroup END
+
+" LSP
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
+
+" TREESITTER
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
+
 " TYPESCRIPT
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
-" GO
+
 au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
@@ -177,7 +171,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/general/path/of/snippets/']
 
-"REMAPPED SNIPPETS, TO SEE THEM TYPE :Ultisnips edit, FOR THAT FILE TYPE 
+"REMAPPED SNIPPETS, TO SEE THEM TYPE :Ultisnips edit, FOR THAT FILE TYPE
 nnoremap <leader>! ihb_t!
 nnoremap <leader>rf! irf__c
 nnoremap <leader>vs! ivs__j
@@ -185,6 +179,7 @@ nnoremap <leader>vs! ivs__j
 " DEOPLETE
 " let g:python_host_prog = '/usr/bin/python'
 " let g:python3_host_prog = '/usr/bin/python3'
+autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'~/go/bin/gocode'
@@ -208,13 +203,6 @@ augroup END
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-" CTRL-P
-let g:ctrlp_use_caching=0
-let g:ctrlp_custom_ignore = 'bin$\|build$\|node_modules$\|tmp$\|dist$\|.git|.bak|.swp|.pyc|.class'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_files=0
-let g:ctrlp_max_height = 18
-
 " FIND AND REPLACE
 function! VisualFindAndReplace()
     :OverCommandLine%s/
@@ -229,7 +217,7 @@ xnoremap <leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 let g:goyo_width=90
 nnoremap <leader>m :Goyo<cr>
 
-" Fugitive
+" FUGITIVE
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
 nnoremap <leader>gd :Gdiff<CR>
@@ -240,13 +228,9 @@ nnoremap <leader>gg :Gcommit -v -q %:p<CR> " Commits current file
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gm :Git merge<CR>
 
-" TELESCOPE
-nnoremap <leader>ft <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " MAXIMIZER FOR THE DEBUGGER
 nnoremap <leader>, :MaximizerToggle!<CR>
+
 " VIMSPECTOR DUBUGGER
 fun! GotoWindow(id)
     call win_gotoid(a:id)
@@ -260,9 +244,7 @@ nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
 nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
 nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
 nnoremap <leader>de :call vimspector#Reset()<CR>
-" JUMP AROUND
-nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
-nnoremap <leader>dX :call vimspector#ClearBreakpoints()><CR>
+
 
 nmap <leader>dl <Plug>VimspectorStepInto
 nmap <leader>dj <Plug>VimspectorStepOver
@@ -275,12 +257,12 @@ nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 nnoremap <leader>d? :call AddToWatch()<CR>
-func! AddToWatch() 
+func! AddToWatch()
   let word = expand("<cexpr>")
   call vimspector#AddWatch(word)
 endfunction
 
-" TOGGLE FOR DEBUG SERVERS/OFF FOR LOCAL 
+" TOGGLE FOR DEBUG SERVERS/OFF FOR LOCAL
 " OFF IS LOCAL, ON IS GLOBAL
 " let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
 
@@ -310,8 +292,8 @@ nnoremap <leader>. @: " Repeat last ex command
 nnoremap <leader>r :set relativenumber!<CR> " Toggle relative line numbers
 
 " YANK/PUT FROM/TO CLIPBOARD
-vnoremap <leader>y "*y 
-map<leader>p "*P  
+vnoremap <leader>y "*y
+map<leader>p "*P
 
 " MAKE Y BEHAVE LIKE ALL THE OTHER CAPITAL LETTERS
 nnoremap Y y$
@@ -326,4 +308,3 @@ inoremap <C-k> <esc>:m .-2<CR>==
 inoremap <C-j> <esc>:m .+1<CR>==
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
-
