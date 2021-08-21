@@ -1,4 +1,3 @@
-"
 "    ____      _ __        _
 "   /  _/___  (_) /__   __(_)___ ___
 "   / // __ \/ / __/ | / / / __ `__ \
@@ -20,6 +19,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
+
+" STARTIFY
+Plug 'mhinz/vim-startify'
 
 " FIND FILES
 Plug 'nvim-lua/popup.nvim'
