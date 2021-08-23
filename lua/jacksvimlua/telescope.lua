@@ -25,7 +25,7 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("fzy_native")
--- require("telescope").load_extension("fzy_native")
+-- require("telescope").load_extension("git_worktree")
 
 local M = {}
 -- M.search_dotfiles = function()
@@ -51,6 +51,15 @@ M.grep_notes = function()
         hidden = true,
     })
 end
+
+-- M.search_current_buffer = function()
+--   require'telescope.builtin'.grep_string{
+--     shorten_path = true,
+--     only_sort_text = true,
+--     hidden = true,
+--     cwd = pwd
+--   }
+-- end
 
 -- local function set_background(content)
 --     vim.fn.system(

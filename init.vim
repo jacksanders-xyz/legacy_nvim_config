@@ -180,7 +180,7 @@ nnoremap <leader>vs! ivs__j
 
 " DEOPLETE
 " let g:python_host_prog = '/usr/bin/python'
-" let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_at_startup = 1
@@ -269,7 +269,6 @@ endfunction
 " let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
 
 "BUFFER MANAGEMENT
-nnoremap <leader>ff :CtrlP<CR> " Find a file in the current folder recursively
 nnoremap <leader>x :bd<CR> " Delete current buffer
 nnoremap <leader>X :bd!<CR> " Delete current buffer
 nnoremap <leader>n :bn!<CR> " Next buffer
@@ -291,7 +290,6 @@ nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
 
 nnoremap <leader>. @: " Repeat last ex command
-nnoremap <leader>r :set relativenumber!<CR> " Toggle relative line numbers
 
 " YANK/PUT FROM/TO CLIPBOARD
 vnoremap <leader>y "*y
