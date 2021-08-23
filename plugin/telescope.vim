@@ -7,7 +7,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fn :lua require('jacksvimlua.telescope').search_notes()<CR>
 nnoremap <leader>fs :lua require('jacksvimlua.telescope').grep_notes()<CR>
-" nnoremap <C-p> :lua require('telescope.builtin').search_current_buffer()<CR>
+nnoremap <leader>fd :lua require('jacksvimlua.telescope').search_dotfiles()<CR>
 
 " nnoremap <leader>rr :lua require('jacksvimlua.telescope').refactors()<CR>
 " vnoremap <leader>rr :lua require('jacksvimlua.telescope').refactors()<CR>

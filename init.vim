@@ -23,6 +23,10 @@ Plug 'tpope/vim-markdown'
 " STARTIFY
 Plug 'mhinz/vim-startify'
 
+" TASKWARRIOR
+Plug 'xarthurx/taskwarrior.vim'
+Plug 'tools-life/taskwiki'
+
 " FIND FILES
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -273,8 +277,11 @@ nnoremap <leader>x :bd<CR> " Delete current buffer
 nnoremap <leader>X :bd!<CR> " Delete current buffer
 nnoremap <leader>n :bn!<CR> " Next buffer
 nnoremap <leader>N :bN!<CR> " Previous buffer
-nnoremap <leader>t :enew<CR> " Make a new empty buffer
+nnoremap <leader>tn :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
+
+" GO TO todo LIST
+nnoremap <leader>td :enew<CR>'T
 
 " ESLINT
 nnoremap <leader>e :new<Bar>0r!npm run lint<CR> " Run eslint in vue
