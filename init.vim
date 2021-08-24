@@ -83,17 +83,6 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 call plug#end()
 
 
-" ~THEMES AND COLORS~
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'medium'
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" GRUVBOX STUFF FOR TABS
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='gruvbox'
-"
 " GENERAL CONFIG
 inoremap jj <ESC>
 inoremap jk <ESC>

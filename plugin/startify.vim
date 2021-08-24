@@ -1,7 +1,8 @@
 let g:startify_bookmarks = [
       \ {'c': '~/.config/nvim/init.vim'},
       \ {'z':'~/.zshrc'},
-      \ {'t':'~/VimWiki/ToDo.md'}
+      \ {'t':'~/VimWiki/ToDo.md'},
+      \ {'p':'~/.vim/plugged/'},
       \ ]
 
 function! s:tasks()
