@@ -38,3 +38,4 @@ set diffopt+=iwhite
 set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
 set updatetime=100 " Keeps gitgutter speedy
+set background=dark

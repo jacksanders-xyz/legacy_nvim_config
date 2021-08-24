@@ -83,6 +83,12 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 call plug#end()
 
 
+" GRUVBOX STUFF FOR TABS
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='gruvbox'
+
 " GENERAL CONFIG
 inoremap jj <ESC>
 inoremap jk <ESC>
@@ -114,17 +120,12 @@ augroup CLEANLINESS
   autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-" LSP
-lua << EOF
-require'lspconfig'.pyright.setup{}
-EOF
 
 " TREESITTER
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
 
 " TYPESCRIPT
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-
 
 au FileType go set noexpandtab
 au FileType go set shiftwidth=4
