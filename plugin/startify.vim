@@ -17,6 +17,7 @@ vim.command("let tasklist = %s"% tasks)
 EOF
     return tasklist
 endfunction
+
 let g:startify_enable_special = 0
 let g:startify_lists = [
       \ { 'type': function('s:tasks'), 'header': ['   Tasks'] },
