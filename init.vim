@@ -38,6 +38,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'gruvbox-community/gruvbox'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'tjdevries/gruvbuddy.nvim'
 
 "LSP
 Plug 'neovim/nvim-lspconfig'
@@ -84,11 +86,10 @@ call plug#end()
 
 
 " GRUVBOX STUFF FOR TABS
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='gruvbox'
-
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline_theme='gruvbox'
 " GENERAL CONFIG
 inoremap jj <ESC>
 inoremap jk <ESC>
@@ -185,15 +186,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ACK.VIM
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" PENCIL
-let g:pencil#wrapModeDefault = 'soft'
-let g:pencil#textwidth = 84
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd,md call pencil#init()
-    autocmd FileType text call pencil#init({'wrap': 'hard'})
-augroup END
 
 " STATUS LINES
 set statusline+=%#warningmsg#

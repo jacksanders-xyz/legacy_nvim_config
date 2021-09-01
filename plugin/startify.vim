@@ -18,9 +18,13 @@ EOF
     return tasklist
 endfunction
 
+" :h startify-colors
+highlight StartifyFile  guifg=yellow
+highlight StartifySection  guifg=blue
+
 let g:startify_enable_special = 0
 let g:startify_lists = [
-      \ { 'type': function('s:tasks'), 'header': ['   Tasks'] },
+      \ { 'type': function('s:tasks'), 'header': ['   TASKS'], },
       \ { 'header': ['   Bookmarks'],       'type': 'bookmarks' },
       \ { 'header': ['   MRU'],            'type': 'files' },
       \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },

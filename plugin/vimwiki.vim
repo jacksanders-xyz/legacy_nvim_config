@@ -17,6 +17,18 @@ endfun
 call ColorMarkdown()
 
 
-" MAKE A LINK FROM THE BUFFER:
+" MAKE A LINK FROM THE BUFFER
 map <leader>wl "*PysiW)i[]<ESC>i
+
+" MAKE A TABLE. THIS FUNCTION TAKES 2 NUMS, COLUMNS THEN (ROWS - 1)
+map <leader>wT :VimwikiTable
+
+fun! PrettyMyRH()
+  :%s/^\[student@workstation \~]/\## [student@workstation \~]/e | %s/^>/\## >/e
+endfun
+
+" PRETTY UP ANY REDHAT LESSON IN VIMWIKI
+nnoremap <leader>wpr :call PrettyMyRH()<CR>
+
+
 
