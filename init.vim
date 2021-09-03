@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-unimpaired'
 
 " STARTIFY
 Plug 'mhinz/vim-startify'
@@ -292,5 +293,4 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 inoremap <C-k> <esc>:m .-2<CR>==
 inoremap <C-j> <esc>:m .+1<CR>==
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
+nnoremap ]e I<CR><ESC>
