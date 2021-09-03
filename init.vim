@@ -67,6 +67,9 @@ Plug 'airblade/vim-gitgutter'
 " VIM WIKI
 Plug 'vimwiki/vimwiki'
 
+" FLOATTERM
+Plug 'voldikss/vim-floaterm'
+
 " LANGS
 Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
 Plug 'HerringtonDarkholme/yats.vim'
@@ -85,11 +88,9 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 call plug#end()
 
 
-" GRUVBOX STUFF FOR TABS
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline_theme='gruvbox'
+" LEADER
+let mapleader=" "
+
 " GENERAL CONFIG
 inoremap jj <ESC>
 inoremap jk <ESC>
@@ -98,18 +99,7 @@ command E Ex " Disambiguates E
 filetype plugin on
 filetype indent on
 
-" JUMP AROUND
-nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
-nnoremap <leader>dX :call vimspector#ClearBreakpoints()><CR>
-
-" VIM-YAML
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-let g:indentLine_char = '⦙'
-
-" LEADER
-let mapleader=" "
-
-"TRIM WHITESPACE AUTO COMMAND
+" TRIM WHITESPACE AUTO COMMAND
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -121,6 +111,9 @@ augroup CLEANLINESS
   autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
+" VIM-YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let g:indentLine_char = '⦙'
 
 " TREESITTER
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
@@ -220,6 +213,10 @@ nnoremap <leader>gm :Git merge<CR>
 nnoremap <leader>, :MaximizerToggle!<CR>
 
 " VIMSPECTOR DUBUGGER
+" JUMP AROUND
+nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+nnoremap <leader>dX :call vimspector#ClearBreakpoints()><CR>
+
 fun! GotoWindow(id)
     call win_gotoid(a:id)
     MaximizerToggle
@@ -262,7 +259,7 @@ nnoremap <leader>N :bN!<CR> " Previous buffer
 nnoremap <leader>tn :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
 
-" GO TO todo LIST
+" GOTO todo LIST
 nnoremap <leader>td :enew<CR>'T
 
 " ESLINT
