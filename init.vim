@@ -78,7 +78,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mrk21/yaml-vim'
 Plug 'osyo-manga/vim-over'
 
-" DRAWING
+" VIM-BOXDRAW
 Plug 'gyim/vim-boxdraw'
 
 " OTHER
