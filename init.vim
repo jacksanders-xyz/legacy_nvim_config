@@ -78,6 +78,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mrk21/yaml-vim'
 Plug 'osyo-manga/vim-over'
 
+" DRAWING
+Plug 'gyim/vim-boxdraw'
+
 " OTHER
 Plug 'thinca/vim-qfreplace'
 Plug 'kshenoy/vim-signature'
@@ -227,7 +230,7 @@ nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
 nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
 nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
 nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+" nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
 nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
 nnoremap <leader>de :call vimspector#Reset()<CR>
 
@@ -281,6 +284,7 @@ nnoremap <leader>. @: " Repeat last ex command
 " YANK/PUT FROM/TO CLIPBOARD
 vnoremap <leader>y "*y
 map<leader>p "*P
+inoremap<c-p> <ESC>"*Pi
 
 " MAKE Y BEHAVE LIKE ALL THE OTHER CAPITAL LETTERS
 nnoremap Y y$
@@ -293,4 +297,6 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 inoremap <C-k> <esc>:m .-2<CR>==
 inoremap <C-j> <esc>:m .+1<CR>==
-nnoremap ]e I<CR><ESC>
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap ]e I<CR><ESC>==

@@ -16,7 +16,6 @@ nnoremap <Leader>fpf :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>fpw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>fpb :lua require('telescope.builtin').buffers()<CR>
 
-
 nnoremap <leader>GC :lua require('jacksvimlua.telescope').git_branches()<CR>
 
 " nnoremap <leader>rr :lua require('jacksvimlua.telescope').refactors()<CR>
