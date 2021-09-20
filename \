@@ -44,20 +44,22 @@ vnoremap ao :<C-u>call boxdraw#Select("ao")<CR>
 vnoremap io :<C-u>call boxdraw#Select("io")<CR>
 
 fun! VisualSelection()
-  norm! gv"ay
+  normal! gv"ay
+  let g:theGrab = @a
 endfun
 
-fun! BoxDrawSpecial()
-  let @a = ""
-  call VisualSelection()
-	let theLabel = @a
-  let theSet = [theLabel]
-  normal! gv$
-	call boxdraw#Draw("+O", theSet)
+fun! BoxDrawSpecial(cmd, args)
+  :let @a = ''
+  :call VisualSelection()
+  let theLabel = string(g:theGrab) . ""
+  :echo theLabel
+  normal! gv
+  call boxdraw#Draw(a:cmd, [theLabel] + a:args)
 endfun
 
 
-vnoremap <leader>b :<C-u>call BoxDrawSpecial()<CR>
+vnoremap <leader>b :<C-u>call BoxDrawSpecial("+O", [])<CR>
+
 
 
 
