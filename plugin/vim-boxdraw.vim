@@ -48,16 +48,28 @@ fun! VisualSelection()
 endfun
 
 fun! BoxDrawSpecial()
-  let @a = ""
+  let @a = ''
   call VisualSelection()
-	let theLabel = @a
-  let theSet = [theLabel]
-  normal! gv$
-	call boxdraw#Draw("+O", theSet)
+  let theLabel = string(@a)
+  echom theLabel
+  norm! gv$
+  call boxdraw#Draw("+O", [theLabel] + [])<CR>
 endfun
-
-
 vnoremap <leader>b :<C-u>call BoxDrawSpecial()<CR>
+
+
+
+" alsikdfhulaskjdjfbhasdkl
+" alsikdfhulaskjdjfbhasdkl
+" alsikdfhulaskjdjfbhasdkl
+" alsikdfhulaskjdjfbhasdkl
+" hello world^@hello world^@hello world^@hello world^@ Label: helloworld'helloworld'
+
+
+
+
+
+
 
 
 
