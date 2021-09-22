@@ -65,19 +65,17 @@ fun! BoxDrawParagraph()
   call VisualSelection()
   norm! yyp}kyyp
   norm! vap{}k$:
-  call DrawABox()
+  :call DrawABox()
+  norm! {j"ap
 endfun
 vnoremap <leader>bd :<C-u>call BoxDrawSpecial()<CR>
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR><CR>
-
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
 " staggared around multiple lines, this is
 " different than the paragraph's that will be
 " on one line, which will be hard, but i will do.
-
-
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
