@@ -68,7 +68,7 @@ fun! BoxDrawParagraph()
   call DrawABox()
 endfun
 vnoremap <leader>bd :<C-u>call BoxDrawSpecial()<CR>
-vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
+vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR><CR>
 
 
 " hello this is a little paragraph that i want to
@@ -79,16 +79,11 @@ vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 
 
 
-
-
-
-
-
-
-
-
-
-
+" hello this is a little paragraph that i want to
+" draw a box around. This paragraph happens to be
+" staggared around multiple lines, this is
+" different than the paragraph's that will be
+" on one line, which will be hard, but i will do.
 
 
 " hello world^@hello world^@hello world^@hello world^@
