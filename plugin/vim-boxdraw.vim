@@ -43,6 +43,20 @@ vnoremap +\| :<C-u>call boxdraw#Draw("+\|", [])<CR>
 vnoremap ao :<C-u>call boxdraw#Select("ao")<CR>
 vnoremap io :<C-u>call boxdraw#Select("io")<CR>
 
+" finds you the furthest column in a block! and sets it to g:rightmostCol:
+function! GetRightmostCol()
+   :let @l=''
+   let start=line("'<")
+   let end=line("'>")
+   let line=start
+   let len=len(getline(line))
+   while line<=end
+      let len=len<len(getline(line))?len(getline(line)):len
+      let line+=1
+   endwhile
+   :let @l=len-1
+   :echo @l
+endfunction
 fun! IncrementSelection()
   norm! {jmt}kmb't
   :execute "normal! \<c-v>'b$\<esc>"
@@ -57,31 +71,28 @@ fun! BoxDrawParagraph()
   norm! 'tV'b>.'t
   :execute "normal! \<c-v>'bI \<esc>"
   norm! V'b$:
-  call DrawABox()
-  norm! 'tjlmi'bklme`i
-  :execute "normal! \<c-v>`et|\<esc>"
-  norm! gv"aP
-  :execute "normal! \<c-v>`eI  \<esc>"
-  norm! gvlyf|
-  :execute "normal! \<c-v>PA|\<esc>0w"
-  :delmarks!
+  call GetRightmostCol()
+  :set ve=block
+  norm! 't0
+  :execute "normal! \<c-v>'b0@ll:\<c-u>call DrawABox()\<cr>"
+  " call DrawABox()
+  " :set ve=onemore
+  " norm! 'tjlmi'bklme`i
+  " :execute "normal! \<c-v>`et|\<esc>"
+  " norm! gv"aP
+  " :execute "normal! \<c-v>`eI  \<esc>"
+  " norm! gvlyf|
+  " :execute "normal! \<c-v>PA|\<esc>0w"
+  " :delmarks!
 endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 vnoremap <leader>bb :<C-u>call GetRightmostCol()<CR>
 
-" finds you the furthest column in a block! and sets it to g:rightmostCol:
-function! GetRightmostCol()
-   let start=line("'<")
-   let end=line("'>")
-   let line=start
-   let len=len(getline(line))
-   while line<=end
-      let len=len<len(getline(line))?len(getline(line)):len
-      let line+=1
-   endwhile
-   :let g:rightmostCol = len
-   :echo len
-endfunction
+" hello this is a little
+" draw a box around.
+" staggared around multiple lines, this is
+" different than the
+" on one line, which will be hard
 
 
 " hello this is a little paragraph that i want to
@@ -90,27 +101,22 @@ endfunction
 " different than the paragraph's that will be
 " on one line, which will be hard, but i will do.
 
-           " +-----------------------------------------------------+
-           " |  " hello this is a little paragraph that i want to  |
-           " |  " draw a box around. This paragraph happens to be  |
-           " |  " staggared around multiple lines, this is         |
-           " |  " different than the paragraph's that will be      |
-           " |  " on one line, which will be hard, but i will do.  |
-           " +-----------------------------------------------------+
-
-
-    " hello this is a little
-    " draw a box around.
-    " staggared around multiple lines, this is
-    " different than the
-    " on one line, which will be hard
-
-
 " hello this is a little
 " draw a box around.
 " staggared around multiple lines, this is
 " different than the
 " on one line, which will be hard
+
+
+    " +-----------------------------------------------------+
+    " |  " hello this is a little paragraph that i want to  |
+    " |  " draw a box around. This paragraph happens to be  |
+    " |  " staggared around multiple lines, this is         |
+    " |  " different than the paragraph's that will be      |
+    " |  " on one line, which will be hard, but i will do.  |
+    " +-----------------------------------------------------+
+
+
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
@@ -121,6 +127,7 @@ endfunction
 " you need to set tw to the largest column in the block, then trigger the block
 " the easier way might be to just fill the last line with as many whitespaces
 " as the furthest column in the block
+
 "
 " ALSO for some reason, (when you want to move to blocl to the place you put
 " the period, selecting and then J moves it downward to the correct indent???
