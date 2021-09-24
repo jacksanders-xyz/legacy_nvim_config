@@ -45,7 +45,7 @@ vnoremap io :<C-u>call boxdraw#Select("io")<CR>
 
 fun! IncrementSelection()
   norm! {jmt}kmb't
-  :execute "normal! \<C-v>'b$"
+  :execute "normal! \<c-v>'b$\<esc>"
 endfun
 fun! DrawABox()
   call boxdraw#Draw("+o", [])
@@ -59,15 +59,28 @@ fun! BoxDrawParagraph()
   norm! V'b$:
   call DrawABox()
   norm! 'tjlmi'bklme`i
-  :execute "normal! \<c-v>`et|"
+  :execute "normal! \<c-v>`et|\<esc>"
   norm! gv"aP
-  " :execute "normal! \<c-v>}kk$hh\<esc>"
-  " :execute "normal! \<c-v>}kklI  \<esc>"
-  " norm! gvlyf|
-  " :execute "normal! \<c-v>PA|\<esc>0w"
-  " :delmarks t b e i
+  :execute "normal! \<c-v>}kklI  \<esc>"
+  norm! gvlyf|
+  :execute "normal! \<c-v>PA|\<esc>0w"
+  :delmarks!
 endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
+nnoremap <C-\> :delmarks!<CR>
+
+" hello this is a little paragraph that i want to
+" draw a box around. This paragraph happens to be
+" staggared around multiple lines, this is
+" different than the paragraph's that will be
+" on one line, which will be hard, but i will do.
+
+" hello this is a little
+" draw a box around.
+" staggared around multiple lines, this is
+" different than the
+" on one line, which will be hard
+
 
 " https://vim.fandom.com/wiki/Replace_a_visual-block_of_text_with_another_such_block
 
