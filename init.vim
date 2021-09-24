@@ -91,7 +91,6 @@ Plug 'dense-analysis/ale'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 call plug#end()
 
-
 " LEADER
 let mapleader=" "
 
@@ -300,3 +299,6 @@ inoremap <C-j> <esc>:m .+1<CR>==
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 nnoremap ]e I<CR><ESC>==
+
+" DELETE ALL MARKS
+nnoremap <C-\> :delmarks!<CR>
