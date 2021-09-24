@@ -44,8 +44,8 @@ vnoremap ao :<C-u>call boxdraw#Select("ao")<CR>
 vnoremap io :<C-u>call boxdraw#Select("io")<CR>
 
 fun! IncrementSelection()
-  norm! gv>0
-  :execute "normal! \<C-v>}$"
+  norm! {j
+  :execute "normal! \<C-v>}k$"
 endfun
 
 fun! DrawABox()
@@ -55,17 +55,17 @@ endfun
 fun! BoxDrawParagraph()
   let @a = ''
   call IncrementSelection()
-  norm! gvk"ay{jyyp}kyyp
-  norm! vap{}k$:
-  :call DrawABox()
+  norm! "ayyyp}kyyp
+  norm! vap{}k>gv$:
+  call DrawABox()
   norm! {jjl
-  :execute "normal! \<C-v>}kk$hh"
-  norm! "aP
+  :execute "normal! \<c-v>}kk$hh\<esc>"
+  norm! gv"aP
 endfun
 
 " vnoremap <leader>bd :<C-u>call BoxDrawSpecial()<CR>
-vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR><CR><C-o>
-
+vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
+" vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR><CR>
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
