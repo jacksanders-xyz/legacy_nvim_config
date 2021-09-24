@@ -44,46 +44,45 @@ vnoremap ao :<C-u>call boxdraw#Select("ao")<CR>
 vnoremap io :<C-u>call boxdraw#Select("io")<CR>
 
 fun! IncrementSelection()
-  norm! {j
-  :execute "normal! \<C-v>}k$"
+  norm! {jmt}kmb't
+  :execute "normal! \<C-v>'b$"
 endfun
-
 fun! DrawABox()
   call boxdraw#Draw("+o", [])
 endfun
-
 fun! BoxDrawParagraph()
   let @a = ''
   call IncrementSelection()
-  norm! "ayyyp}kyyp
-  norm! vap{}k>gv$:
+  norm! gv"ay'tyyp'byykp
+  norm! 'tV'b>.'t
+  :execute "normal! \<c-v>'bI \<esc>"
+  norm! V'b$:
   call DrawABox()
-  norm! {jjl
-  :execute "normal! \<c-v>}kk$hh\<esc>"
+  norm! 'tjlmi'bklme`i
+  :execute "normal! \<c-v>`et|"
   norm! gv"aP
+  " :execute "normal! \<c-v>}kk$hh\<esc>"
+  " :execute "normal! \<c-v>}kklI  \<esc>"
+  " norm! gvlyf|
+  " :execute "normal! \<c-v>PA|\<esc>0w"
+  " :delmarks t b e i
 endfun
-
-" vnoremap <leader>bd :<C-u>call BoxDrawSpecial()<CR>
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
-" vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR><CR>
-
-" hello this is a little paragraph that i want to
-" draw a box around. This paragraph happens to be
-" staggared around multiple lines, this is
-" different than the paragraph's that will be
-" on one line, which will be hard, but i will do.
 
 " https://vim.fandom.com/wiki/Replace_a_visual-block_of_text_with_another_such_block
 
+" hello this is a little
+" draw a box around.
+" staggared around multiple lines, this is
+" different than the
+" on one line, which will be hard
+
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
 " staggared around multiple lines, this is
 " different than the paragraph's that will be
 " on one line, which will be hard, but i will do.
 
-" hello world^@hello world^@hello world^@hello world^@
-" Label: helloworld'helloworld'
-"
 " fun! BoxDrawParagraph()
 "   let @a = ''
 "   call IncrementSelection()
