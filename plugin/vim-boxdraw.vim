@@ -54,7 +54,7 @@ function! GetRightmostCol()
       let len=len<len(getline(line))?len(getline(line)):len
       let line+=1
    endwhile
-   :let @l=len-1
+   :let @l=len
    :echo @l
 endfunction
 fun! IncrementSelection()
@@ -75,25 +75,26 @@ fun! BoxDrawParagraph()
   :set ve=block
   norm! 't0
   :execute "normal! \<c-v>'b0@ll:\<c-u>call DrawABox()\<cr>"
-  " call DrawABox()
-  " :set ve=onemore
-  " norm! 'tjlmi'bklme`i
-  " :execute "normal! \<c-v>`et|\<esc>"
-  " norm! gv"aP
-  " :execute "normal! \<c-v>`eI  \<esc>"
-  " norm! gvlyf|
-  " :execute "normal! \<c-v>PA|\<esc>0w"
-  " :delmarks!
+  :set ve=onemore
+  norm! 'tjlmi'bklme`i
+  :execute "normal! \<c-v>`et|\<esc>"
+  norm! gv"aP
+  :execute "normal! \<c-v>`eI  \<esc>"
+  norm! gvlyf|
+  :execute "normal! \<c-v>PA|\<esc>0w"
+  :delmarks!
+  let @a = ''
+  let @l = ''
 endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 vnoremap <leader>bb :<C-u>call GetRightmostCol()<CR>
+
 
 " hello this is a little
 " draw a box around.
 " staggared around multiple lines, this is
 " different than the
 " on one line, which will be hard
-
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
