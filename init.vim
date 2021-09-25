@@ -81,6 +81,9 @@ Plug 'osyo-manga/vim-over'
 " VIM-BOXDRAW
 Plug 'gyim/vim-boxdraw'
 
+" LIB-MODAL
+Plug 'Iron-E/nvim-libmodal'
+
 " OTHER
 Plug 'thinca/vim-qfreplace'
 Plug 'kshenoy/vim-signature'

@@ -62,15 +62,8 @@ endfun
 fun! DrawABox()
   call boxdraw#Draw("+o", [])
 endfun
-fun! Prepatory()
-  norm! '<
-  let @s = col('.') - 1
-  norm! gv=
-endfun!
 fun! BoxDrawParagraph()
   let @a = ''
-  call Prepatory()
-  norm! vap'>$:
   call IncrementSelection()
   norm! gv"ay'tyyp'byykp
   norm! 'tV'b>.'t
@@ -89,11 +82,19 @@ fun! BoxDrawParagraph()
   :execute "normal! \<c-v>PA|\<esc>0w"
   :delmarks!
   let @a = ''
-  let @s = ''
   let @l = ''
 endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
-vnoremap <leader>bb :<C-u>call Prepatory()<CR>
+vnoremap <leader>bb :<C-u>call GetRightmostCol()<CR>
+
+
+                    " hello this is a little paragraph that i want to
+                    " draw a box around. This paragraph happens to be
+                    " staggared around multiple lines, this is
+                    " different than the paragraph's that will be
+                    " on one line, which will be hard, but i will do.
+
+
 
 
 
@@ -106,7 +107,7 @@ vnoremap <leader>bb :<C-u>call Prepatory()<CR>
 " on one line, which will be hard
 
   " norm! g'<ms
-" vnoremap K :m '<-2<CR>gv=gv
+" vnoremap J :m '>+1<CR>gv=gv
 
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
