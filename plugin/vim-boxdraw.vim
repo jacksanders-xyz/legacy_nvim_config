@@ -86,7 +86,11 @@ fun! BoxDrawParagraph()
   norm! gv"aP
   :execute "normal! \<c-v>`eI  \<esc>"
   norm! gvlyf|
-  :execute "normal! \<c-v>PA|\<esc>0w"
+  :if @s == 0
+    :execute "normal! \<c-v>PA|\<esc> "
+  :else
+    :execute "normal! \<c-v>PA|\<esc>'t\<c-v>'b@sI "
+  :endif
   :delmarks!
   let @a = ''
   let @s = ''
@@ -96,23 +100,23 @@ vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 vnoremap <leader>bb :<C-u>call Prepatory()<CR>
 
 
+                    " hello this is a little paragraph that i want to
+                    " draw a box around. This paragraph happens to be
+                    " staggared around multiple lines, this is
+                    " different than the paragraph's that will be
+                    " on one line, which will be hard, but i will do.
 
-" hello this is a little
-" draw a box around.
-" staggared around multiple lines,
-"
-" this is
-" different than the
-" on one line, which will be hard
 
-  " norm! g'<ms
+" norm! g'<ms
 " vnoremap K :m '<-2<CR>gv=gv
-
+"
 " hello this is a little paragraph that i want to
 " draw a box around. This paragraph happens to be
 " staggared around multiple lines, this is
 " different than the paragraph's that will be
 " on one line, which will be hard, but i will do.
+
+
 
 " - the boxes will align when indentined... you can do this by pasting the
 "   white space in that was the difference from the inital column offset
@@ -120,4 +124,9 @@ vnoremap <leader>bb :<C-u>call Prepatory()<CR>
 " ALSO for some reason, (when you want to move to block to the place you put
 " the period, selecting and then J moves it downward to the correct indent???
 " idk
+
 " https://vim.fandom.com/wiki/Replace_a_visual-block_of_text_with_another_such_block
+
+
+
+
