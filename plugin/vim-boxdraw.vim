@@ -53,7 +53,6 @@ function! GetRightmostCol()
       let line+=1
    endwhile
    :let @l=len
-   :echo @l
 endfunction
 fun! IncrementSelection()
   norm! {jmt}kmb't
@@ -63,9 +62,11 @@ fun! DrawABox()
   call boxdraw#Draw("+o", [])
 endfun
 fun! Prepatory()
-  norm! '<
+  norm! g'<
   let @s = col('.') - 1
+  :if @s > 0
   norm! gv=
+  :endif
 endfun
 fun! BoxDrawParagraph()
   let @a = ''
@@ -89,8 +90,7 @@ fun! BoxDrawParagraph()
   :if @s == 0
   :execute "normal! \<c-v>PA|\<esc>"
   :else
-  :execute "normal! \<c-v>PA|\<esc>'tV'b:m'<-2\<cr>"
-  " :execute "normal! \<c-v>PA|\<esc>'t\<c-v>'b@sI "
+  :execute "normal! \<c-v>PA|\<esc>'tV'b:m'<-2\<cr>'t\<c-v>'b@sI "
   :endif
   :delmarks!
   let @a = ''
@@ -99,35 +99,12 @@ fun! BoxDrawParagraph()
 endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 vnoremap <leader>bb :<C-u>call Prepatory()<CR>
-
-                    " hello this is a little paragraph that i want to
-                    " draw a box around. This paragraph happens to be
-                    " staggared around multiple lines, this is
-                    " different than the paragraph's that will be
-                    " on one line, which will be hard, but i will do.
+vnoremap <leader>bf :<C-u>call GetRightmostCol()<CR>
 
 
-
-" norm! g'<ms
-"
-" vnoremap K :m '<-2<CR>gv=gv
-"
-" hello this is a little paragraph that i want to
-" draw a box around. This paragraph happens to be
-" staggared around multiple lines, this is
-" different than the paragraph's that will be
-" on one line, which will be hard, but i will do.
-
-
-
-" - the boxes will align when indentined... you can do this by pasting the
-"   white space in that was the difference from the inital column offset
-" - the boxes will seperate themselves from blocks of words
-" ALSO for some reason, (when you want to move to block to the place you put
-" the period, selecting and then J moves it downward to the correct indent???
-" idk
-" https://vim.fandom.com/wiki/Replace_a_visual-block_of_text_with_another_such_block
-
-
-
+                      " hello this is a little paragraph that i want to
+                      " draw a box around. This paragraph happens to be
+                      " staggared around multiple lines, this is
+                      " different than the paragraph's that will be
+                      " on one line, which will be hard, but i will do.
 
