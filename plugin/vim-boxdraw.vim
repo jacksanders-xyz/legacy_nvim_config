@@ -66,7 +66,7 @@ fun! Prepatory()
   norm! '<
   let @s = col('.') - 1
   norm! gv=
-endfun!
+endfun
 fun! BoxDrawParagraph()
   let @a = ''
   call Prepatory()
@@ -87,9 +87,10 @@ fun! BoxDrawParagraph()
   :execute "normal! \<c-v>`eI  \<esc>"
   norm! gvlyf|
   :if @s == 0
-    :execute "normal! \<c-v>PA|\<esc> "
+  :execute "normal! \<c-v>PA|\<esc>"
   :else
-    :execute "normal! \<c-v>PA|\<esc>'t\<c-v>'b@sI "
+  :execute "normal! \<c-v>PA|\<esc>'tV'b:m'<-2\<cr>"
+  " :execute "normal! \<c-v>PA|\<esc>'t\<c-v>'b@sI "
   :endif
   :delmarks!
   let @a = ''
@@ -99,7 +100,6 @@ endfun
 vnoremap <leader>bp :<C-u>call BoxDrawParagraph()<CR>
 vnoremap <leader>bb :<C-u>call Prepatory()<CR>
 
-
                     " hello this is a little paragraph that i want to
                     " draw a box around. This paragraph happens to be
                     " staggared around multiple lines, this is
@@ -107,7 +107,9 @@ vnoremap <leader>bb :<C-u>call Prepatory()<CR>
                     " on one line, which will be hard, but i will do.
 
 
+
 " norm! g'<ms
+"
 " vnoremap K :m '<-2<CR>gv=gv
 "
 " hello this is a little paragraph that i want to
@@ -124,7 +126,6 @@ vnoremap <leader>bb :<C-u>call Prepatory()<CR>
 " ALSO for some reason, (when you want to move to block to the place you put
 " the period, selecting and then J moves it downward to the correct indent???
 " idk
-
 " https://vim.fandom.com/wiki/Replace_a_visual-block_of_text_with_another_such_block
 
 
