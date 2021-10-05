@@ -72,7 +72,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'voldikss/vim-floaterm'
 
 " LANGS
-Plug 'mhartington/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': './install.sh' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mrk21/yaml-vim'
