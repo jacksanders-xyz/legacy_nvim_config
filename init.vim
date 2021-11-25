@@ -18,8 +18,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
-" Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-markdown' " Plug 'tpope/vim-unimpaired'
 
 " STARTIFY
 Plug 'mhinz/vim-startify'
@@ -80,6 +79,9 @@ Plug 'osyo-manga/vim-over'
 
 " VIM-BOXDRAW
 Plug 'gyim/vim-boxdraw'
+
+" SUPERCOLLIDER
+Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " OTHER
 Plug 'thinca/vim-qfreplace'
@@ -204,12 +206,12 @@ nnoremap <leader>m :Goyo<cr>
 
 " FUGITIVE
 nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gs :Git status<CR> " Views status, use `-` and `p` to add/remove files
+nnoremap <leader>gd :Git diff<CR>
 nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>gg :Gcommit -v -q %:p<CR> " Commits current file
+nnoremap <leader>gc :Git commit -v -q<CR>
+nnoremap <leader>gg :Git commit -v -q %:p<CR> " Commits current file
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gm :Git merge<CR>
 

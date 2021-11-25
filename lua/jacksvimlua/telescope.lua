@@ -18,13 +18,12 @@ require("telescope").setup({
     },
     extensions = {
         fzy_native = {
-            override_generic_sorter = false,
+            override_generic_sorter = true,
             override_file_sorter = true,
         },
     },
 })
-
-require("telescope").load_extension("fzy_native")
+require('telescope').load_extension('fzy_native')
 -- require("telescope").load_extension("git_worktree")
 
 local M = {}
@@ -48,7 +47,7 @@ end
 M.grep_notes = function()
     require("telescope.builtin").live_grep({
         prompt_title = "< Grep Jack's Brain >",
-        cwd = '~/vimwiki/',
+        cwd = '~/VimWiki/',
         hidden = true,
     })
 end
