@@ -1,4 +1,11 @@
 local actions = require("telescope.actions")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local previewers = require("telescope.previewers")
+local action_state = require("telescope.actions.state")
+local conf = require("telescope.config").values
+
+
 require("telescope").setup({
     defaults = {
         file_sorter = require("telescope.sorters").get_fzy_sorter,
@@ -18,7 +25,7 @@ require("telescope").setup({
     },
     extensions = {
         fzy_native = {
-            override_generic_sorter = true,
+            override_generic_sorter = false,
             override_file_sorter = true,
         },
     },

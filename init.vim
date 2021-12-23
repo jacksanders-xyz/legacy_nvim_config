@@ -83,6 +83,9 @@ Plug 'gyim/vim-boxdraw'
 " SUPERCOLLIDER
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
+" LIB-MODAL
+Plug 'Iron-E/nvim-libmodal'
+
 " OTHER
 Plug 'thinca/vim-qfreplace'
 Plug 'kshenoy/vim-signature'
@@ -173,7 +176,6 @@ nnoremap <leader>rf! irf__c
 nnoremap <leader>vs! ivs__j
 
 " DEOPLETE
-" let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 let g:deoplete#enable_at_startup = 1
@@ -182,6 +184,7 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'~/go/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" let g:python_host_prog = '/usr/bin/python'
 
 " ACK.VIM
 let g:ackprg = 'ag --nogroup --nocolor --column'
