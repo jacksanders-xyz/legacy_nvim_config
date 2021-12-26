@@ -9,11 +9,16 @@ return {
       ['noremap'] = true
     },
     ['f'] = {
-      ['rhs'] = ':lua trigger_NF()<CR>',
+      ['rhs'] = ':lua enter_NF()<CR>',
       ['noremap'] = true
     },
-    ['<ESC>'] = {
-      ['rhs'] = ':lua exit_score_layer()<CR>',
+    ['t'] = {
+      ['rhs'] = ':lua talk()<CR>',
+      ['noremap'] = true,
+      ['silent'] = true
+    },
+    ['<Esc>'] = {
+      ['rhs'] = ':lua exit_SL()<CR>',
       ['noremap'] = true,
       ['silent'] = true
     },

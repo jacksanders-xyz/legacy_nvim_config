@@ -1,4 +1,4 @@
 return {
   ['w'] = 'bn',
-  ['<ESC>'] = ':lua exit_NF()<CR>',
+  ['Esc'] = ':lua exit_NF()<CR>',
 }
