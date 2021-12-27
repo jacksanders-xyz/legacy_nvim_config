@@ -1,15 +1,14 @@
 local libmodal = require('libmodal')
-
 local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.scoreMaps')
-local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
 local unMap = require('jacksvimlua.SCORE_MODE_MODULES.unMap')
-local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
-local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
-
+local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
+-- local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
+-- local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
 local score_layer = libmodal.Layer.new(scoreMaps)
 local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
 local modeIdentifier = 'score'
 local api = vim.api
+
 
 -- function talk()
 --   vim.g.MI = modeIdentifier
@@ -18,7 +17,6 @@ local api = vim.api
 -- end
 
 function exit_SL()
-  modeIdentifier = 'score'
   unMap(score_layer)
   -- normalMap()
 end
