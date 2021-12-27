@@ -1,26 +1,26 @@
 local libmodal = require('libmodal')
-local scoreMaps = require('jacksvimlua.scoreMaps')
-local noteFloatMaps = require('jacksvimlua.noteFloatMaps')
+
+local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.scoreMaps')
+local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
+local unMap = require('jacksvimlua.SCORE_MODE_MODULES.unMap')
+local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
+local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
+
 local score_layer = libmodal.Layer.new(scoreMaps)
 local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
--- local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps, true)
 local modeIdentifier = 'score'
 local api = vim.api
 
+-- function talk()
+--   vim.g.MI = modeIdentifier
+--   api.nvim_command("echom g:MI")
+--   -- api.nvim_command("echom g:foo")
+-- end
+
 function exit_SL()
   modeIdentifier = 'score'
-  return score_layer:exit()
-end
-
-function talk()
-  vim.g.MI = modeIdentifier
-  api.nvim_command("echom g:MI")
-  -- api.nvim_command("echom g:foo")
-end
-
-function enter_NF()
-  modeIdentifier = 'note_float'
-  handlerFunction()
+  unMap(score_layer)
+  -- normalMap()
 end
 
 function exit_NF()
@@ -29,29 +29,21 @@ function exit_NF()
   handlerFunction()
 end
 
+function enter_NF()
+  modeIdentifier = 'note_float'
+  handlerFunction()
+end
+
 function handlerFunction()
   if(modeIdentifier == 'score')
     then
-      return score_layer:enter()
+      score_layer:enter()
   elseif(modeIdentifier == 'note_float')
     then
-      return note_float:enter()
+      note_float:enter()
     end
 end
 
 return function()
   handlerFunction()
 end
-
--- local fooModeCombos = {
--- 	[''] = 'echom "You cant exit using escape."',
--- 	['q'] = 'let g:fooModeExit = 1'
--- }
-
--- -- Tell the mode not to exit automatically.
--- vim.api.nvim_set_var('fooModeExit', 0)
---
---
---
---
--- vim.api.nvim_set_var('noteFloatModeExit', 0)

@@ -86,6 +86,7 @@ Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " LIB-MODAL
 Plug 'Iron-E/nvim-libmodal'
+Plug 'famiu/nvim-reload'
 
 " OTHER
 Plug 'thinca/vim-qfreplace'
