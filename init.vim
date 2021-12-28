@@ -18,7 +18,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown' " Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-unimpaired'
 
 " STARTIFY
 Plug 'mhinz/vim-startify'
@@ -86,7 +87,6 @@ Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 
 " LIB-MODAL
 Plug 'Iron-E/nvim-libmodal'
-Plug 'famiu/nvim-reload'
 
 " OTHER
 Plug 'thinca/vim-qfreplace'
