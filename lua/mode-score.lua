@@ -2,18 +2,20 @@ local libmodal = require('libmodal')
 local unMap = require('jacksvimlua.SCORE_MODE_MODULES.unMap')
 local reMap = require('jacksvimlua.SCORE_MODE_MODULES.reMap')
 local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.scoreMaps')
-local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
-local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
-local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
-local score_layer = libmodal.Layer.new(scoreMaps)
-local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
+-- local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
+-- local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
+-- local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
+local table_copy = require('jacksvimlua.SCORE_MODE_MODULES.table_copy')
+local runningMap = table_copy(scoreMaps)
 local modeIdentifier = 'score'
 local api = vim.api
+local score_layer = libmodal.Layer.new(runningMap)
+local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
 
--- function talk()
-  -- vim.g.MI = runningMap
-  -- api.nvim_command("echom g:MI")
--- end
+function talk()
+  vim.g.MI = runningMap
+  api.nvim_command("echom g:MI")
+end
 
 function exit_SL()
   unMap(score_layer)
@@ -45,6 +47,6 @@ function handlerFunction()
 end
 
 return function()
-  -- talk()
+  talk()
   handlerFunction()
 end

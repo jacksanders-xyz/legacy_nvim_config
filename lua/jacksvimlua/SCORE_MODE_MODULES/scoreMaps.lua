@@ -1,4 +1,4 @@
-  return {
+return {
     ['n'] = {
       ['gg'] = {
         ['rhs'] = 'G',
@@ -23,4 +23,4 @@
         ['silent'] = true
       },
     }
-  }
+}
