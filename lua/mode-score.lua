@@ -12,10 +12,10 @@ local api = vim.api
 local score_layer = libmodal.Layer.new(runningMap)
 local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
 
-function talk()
-  vim.g.MI = runningMap
-  api.nvim_command("echom g:MI")
-end
+-- function talk()
+--   vim.g.MI = runningMap
+--   api.nvim_command("echom g:MI")
+-- end
 
 function exit_SL()
   unMap(score_layer)
@@ -47,6 +47,6 @@ function handlerFunction()
 end
 
 return function()
-  talk()
+  -- talk()
   handlerFunction()
 end

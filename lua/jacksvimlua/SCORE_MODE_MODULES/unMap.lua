@@ -5,6 +5,6 @@ return function(score_layer)
   for key,value in pairs(runningMap2['n']) do
         score_layer:unmap('n', key)
   end
-  vim.g.MI = activeMap
-  vim.api.nvim_command("echom g:MI")
+  -- vim.g.MI = activeMap
+  -- vim.api.nvim_command("echom g:MI")
 end

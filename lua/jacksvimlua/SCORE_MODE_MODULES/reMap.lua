@@ -2,8 +2,8 @@ local activeMap = require('jacksvimlua.SCORE_MODE_MODULES.scoreMaps')
 local table_copy = require('jacksvimlua.SCORE_MODE_MODULES.table_copy')
 local runningMap3 = table_copy(activeMap)
 return function(score_layer)
-     vim.g.MI = activeMap
-     vim.api.nvim_command("echom g:MI")
+     -- vim.g.MI = activeMap
+     -- vim.api.nvim_command("echom g:MI")
   for key,value in pairs(runningMap3['n']) do
      score_layer:map('n', key, value['rhs'], {['noremap'] = true})
   end
