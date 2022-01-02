@@ -9,4 +9,5 @@ fun! ScoreModeInit()
     lua require('mode-score')()
   endif
 endfun
-nnoremap <buffer> <Leader>7 :call ScoreModeInit()<CR>
+
+nnoremap <buffer> <Leader><Tab> :call ScoreModeInit()<CR>

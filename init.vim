@@ -18,7 +18,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
 " Plug 'tpope/vim-unimpaired'
 
 " STARTIFY
@@ -35,7 +34,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " COLORS
-Plug 'feline-nvim/feline.nvim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -165,17 +163,6 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:airline#extensions#ale#enabled = 1
 autocmd BufWritePost *.js ALEFix
 
-" ULTISSNIPS SNIPPETS
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/general/path/of/snippets/']
-
-"REMAPPED SNIPPETS, TO SEE THEM TYPE :Ultisnips edit, FOR THAT FILE TYPE
-nnoremap <leader>! ihb_t!
-nnoremap <leader>rf! irf__c
-nnoremap <leader>vs! ivs__j
 
 " DEOPLETE
 let g:python3_host_prog = '/usr/local/bin/python3'
