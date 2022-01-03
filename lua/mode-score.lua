@@ -15,9 +15,25 @@ local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
 local staff_constructor = libmodal.Mode.new('STAFF', staffConstructorMaps)
 
 -- function talk()
---   vim.g.MI = runningMap
---   api.nvim_command("echom g:MI")
+  -- vim.g.MI = runningMap
+  -- api.nvim_command("echom g:MI")
 -- end
+
+-- local function t(str)
+--     return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+
+-- wrapper for replace termcodes
+-- local t = function(str)
+--   return vim.api.nvim_replace_termcodes(str, true, false, true)
+-- end
+
+function staff_builder_func(staff_instruction)
+  -- "'<Esc>:norm iSC_sO_1<cr>A<tab>'"
+  local string_prep = "lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>:norm i"..staff_instruction
+  string_prep = string_prep.."<cr>A<tab>',true,false,true),'m',true)"
+  api.nvim_command(string_prep)
+end
 
 function set_coordinates()
   api.nvim_command("set cursorline")

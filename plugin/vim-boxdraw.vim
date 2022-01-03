@@ -47,5 +47,3 @@ fun! BoxDrawSpecial(cmd, args, MyLabel)
 	let theLabel = string(a:MyLabel)
 	call boxdraw#Draw(a:cmd, [theLabel] + a:args)
 endfun
-
-
