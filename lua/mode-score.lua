@@ -12,7 +12,7 @@ local modeIdentifier = 'score'
 local api = vim.api
 local score_layer = libmodal.Layer.new(runningMap)
 local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
-local staff_constructor = libmodal.Mode.new('STAFF', staffConstructorMaps)
+-- local staff_constructor = libmodal.Mode.new('STAFF', staffConstructorMaps)
 
 -- function talk()
   -- vim.g.MI = runningMap
@@ -28,12 +28,6 @@ local staff_constructor = libmodal.Mode.new('STAFF', staffConstructorMaps)
 --   return vim.api.nvim_replace_termcodes(str, true, false, true)
 -- end
 
-function staff_builder_func(staff_instruction)
-  -- "'<Esc>:norm iSC_sO_1<cr>A<tab>'"
-  local string_prep = "lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>:norm i"..staff_instruction
-  string_prep = string_prep.."<cr>A<tab>',true,false,true),'m',true)"
-  api.nvim_command(string_prep)
-end
 
 function set_coordinates()
   api.nvim_command("set cursorline")
@@ -69,14 +63,22 @@ end
 function enter_SC()
   modeIdentifier = 'staff_constructor'
   set_coordinates()
+  vim.g.staffModeExit = false
   handlerFunction()
-  kill_coordinates()
+  -- kill_coordinates()
 end
 
 function exit_SC()
-  staff_constructor:exit()
+  vim.g.staffModeExit = true
   modeIdentifier = 'score'
-  handlerFunction()
+  kill_coordinates()
+  -- handlerFunction()
+end
+
+function staff_builder_func(staff_instruction)
+  local string_prep = "lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('q:norm i"..staff_instruction
+  string_prep = string_prep.."<cr>A<tab>',true,false,true),'m',true)"
+  api.nvim_command(string_prep)
 end
 
 function handlerFunction()
@@ -88,7 +90,8 @@ function handlerFunction()
       note_float:enter()
   elseif(modeIdentifier == 'staff_constructor')
     then
-      staff_constructor:enter()
+      libmodal.mode.enter('STAFF', staffConstructorMaps, true)
+      -- staff_constructor:enter()
     end
 end
 
