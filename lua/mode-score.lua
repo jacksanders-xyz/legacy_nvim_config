@@ -1,6 +1,7 @@
 local libmodal = require('libmodal')
 
-local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.scoreMaps')
+local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.scoreMaps')()
+
 local staffConstructorMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.staffConstructorMaps')
 local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.noteFloatMaps')
 
