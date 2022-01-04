@@ -43,6 +43,14 @@ M.search_dotfiles = function()
     })
 end
 
+M.grep_dotfiles = function()
+    require("telescope.builtin").live_grep({
+        prompt_title = "< Grep .dotfiles >",
+        cwd = '~/.config/nvim',
+        hidden = true,
+    })
+end
+
 M.search_notes = function()
     require("telescope.builtin").find_files({
         prompt_title = "< Jack's Brain >",
