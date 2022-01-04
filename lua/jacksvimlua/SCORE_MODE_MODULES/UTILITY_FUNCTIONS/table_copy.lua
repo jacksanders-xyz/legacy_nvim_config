@@ -1,10 +1,3 @@
--- function copy(obj)
---   local s = {}
---   local res = setmetatable({}, getmetatable(obj))
---   s[obj] = res
---   for k, v in pairs(obj) do res[copy(k, s)] = copy(v, s) end
---   return res
--- end
 function deepcopy(orig)
     local orig_type = type(orig)
     local copy

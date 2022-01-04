@@ -1,33 +1,23 @@
 local libmodal = require('libmodal')
-local unMap = require('jacksvimlua.SCORE_MODE_MODULES.unMap')
-local reMap = require('jacksvimlua.SCORE_MODE_MODULES.reMap')
-local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.scoreMaps')
-local staffConstructorMaps = require('jacksvimlua.SCORE_MODE_MODULES.staffConstructorMaps')
--- local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.noteFloatMaps')
--- local unMapNormal = require('jacksvimlua.SCORE_MODE_MODULES.unMapNormal')
--- local normalMap = require('jacksvimlua.SCORE_MODE_MODULES.normalMap')
-local table_copy = require('jacksvimlua.SCORE_MODE_MODULES.table_copy')
+
+local scoreMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.scoreMaps')
+local staffConstructorMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.staffConstructorMaps')
+local noteFloatMaps = require('jacksvimlua.SCORE_MODE_MODULES.MODE_MAPS.noteFloatMaps')
+
+local unMap = require('jacksvimlua.SCORE_MODE_MODULES.UTILITY_FUNCTIONS.unMap')
+local reMap = require('jacksvimlua.SCORE_MODE_MODULES.UTILITY_FUNCTIONS.reMap')
+local table_copy = require('jacksvimlua.SCORE_MODE_MODULES.UTILITY_FUNCTIONS.table_copy')
+
 local runningMap = table_copy(scoreMaps)
 local modeIdentifier = 'score'
 local api = vim.api
 local score_layer = libmodal.Layer.new(runningMap)
 local note_float = libmodal.Mode.new('NOTE FLOAT', noteFloatMaps)
--- local staff_constructor = libmodal.Mode.new('STAFF', staffConstructorMaps)
 
 -- function talk()
   -- vim.g.MI = runningMap
   -- api.nvim_command("echom g:MI")
 -- end
-
--- local function t(str)
---     return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
-
--- wrapper for replace termcodes
--- local t = function(str)
---   return vim.api.nvim_replace_termcodes(str, true, false, true)
--- end
-
 
 function set_coordinates()
   api.nvim_command("set cursorline")
@@ -91,12 +81,10 @@ function handlerFunction()
   elseif(modeIdentifier == 'staff_constructor')
     then
       libmodal.mode.enter('STAFF', staffConstructorMaps, true)
-      -- staff_constructor:enter()
     end
 end
 
 return function()
-  -- talk()
   api.nvim_command("set colorcolumn=130")
   handlerFunction()
 end

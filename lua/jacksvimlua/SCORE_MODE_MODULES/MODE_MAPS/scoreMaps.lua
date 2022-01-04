@@ -1,3 +1,15 @@
+-- tables of glyphs:
+-- local activeMap = require('jacksvimlua.SCORE_MODE_MODULES.numbers_glyphs')
+
+-- local table_copy = require('jacksvimlua.SCORE_MODE_MODULES.table_copy')
+-- local runningMap2 = table_copy(activeMap)
+
+
+-- local
+-- return function()
+--   return {}
+-- end
+
 return {
   ['n'] = {
       ['<C-f>'] = {
@@ -183,9 +195,3 @@ return {
       },
     }
 }
-
-
-
-
-
-
